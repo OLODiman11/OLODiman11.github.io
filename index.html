@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Колесо BFD</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wheel-container">
+        <canvas id="wheel"></canvas>
+        <img id="wheel-img" width="75pt" height="75pt" src="images/3x_1.gif" alt="">
+        <img id="arc" width="75pt" height="170pt" src="images/arc.png" alt="">
+        <div id="description">Description placeholder.</div>        
+    </div>
+
+    <div>
+        <div>
+            <input type="radio" id="events" name="list" value="events-data" autocomplete="off" data-show-edit-dialog="1" />
+            <label for="events">События</label>
+        </div>
+
+        <div>
+            <input type="radio" id="clennedj" name="list" value="clennedj-data" autocomplete="off" data-show-edit-dialog="1" />
+            <label for="clennedj">Членендж</label>
+        </div>
+
+        <div>
+            <input type="radio" id="points" name="list" value="points-data" autocomplete="off" data-show-edit-dialog="1" />
+            <label for="points">Баллы</label>
+        </div>
+
+        <div>
+            <input type="radio" id="ganres" name="list" value="ganres-data" autocomplete="off" data-show-edit-dialog="1" />
+            <label for="ganres">Жанры</label>
+        </div>
+
+        <div>
+            <input type="radio" id="punishments" name="list" value="punishments-data" autocomplete="off" data-show-edit-dialog="1" />
+            <label for="punishments">Наказания</label>
+        </div>
+
+        <div>
+            <input type="radio" id="coins" name="list" value="coins-data" autocomplete="off" checked />
+            <label for="coins">Монетка</label>
+        </div>
+
+        <div>
+            <input type="radio" id="items" name="list" value="items-data" autocomplete="off" checked />
+            <label for="items">Предметы</label>
+        </div>
+
+        <div>
+            <input type="radio" id="friends" name="list" value="friends-data" autocomplete="off" checked />
+            <label for="friends">Друзья</label>
+        </div>
+    
+        <button id="spin">Крутить</button>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="dataLoader.js"></script>
+    <script src="wheel.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

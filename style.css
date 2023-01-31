@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(26, 37, 43);
+}
+
+.wheel-container {
+    position: relative;
+    margin-right: 10%;
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+}
+
+#wheel-img {
+    position: absolute;
+    top: 50% - 27.5pt;
+    left: -27.5pt;
+}
+
+#arc {
+    position: absolute;
+    top: 50% - 27.5pt;
+    left: 27.5pt;
+}
+
+#description {
+    font-size: 23px;
+    color: aliceblue;
+    font-family: serif;
+}

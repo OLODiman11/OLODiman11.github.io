@@ -1,0 +1,17 @@
+[
+    {
+        "title":"Монетка",
+        "description":"Решка",
+        "quantity":5
+    },
+    {
+        "title":"Монетка",
+        "description":"Орел",
+        "quantity":5
+    },
+    {
+        "title":"Монетка",
+        "description":"Ребро",
+        "quantity":1
+    }
+]
