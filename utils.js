@@ -14,6 +14,10 @@ function clamp(value, min, max){
     return Math.max(Math.min(value, max), min);
 }
 
+function clamp01(value){
+    return clamp(value, 0, 1);
+}
+
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
@@ -26,4 +30,12 @@ function shuffle(array) {
     }
   
     return array;
+}
+
+function easeInOutSine(x) {
+    return -(Math.cos(Math.PI * x) - 1) / 2;
+}
+
+function randomInt(start, end){
+    return Math.round(start + Math.random() * (end - start));
 }

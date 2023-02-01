@@ -3,64 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>Колесо BFD</title>
-
+    <link rel="icon" href="favicon.ico" type="image/ico" sizes="16x16">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="edit" class="hidden">
+        <div id="editField">
+            <div id="scrollview">
+                <ul id="scrollviewUl"></ul>
+            </div>
+            <button onclick="applyConfiguration()">Применить</button>
+            
+        </div>
+    </div>
+
     <div class="wheel-container">
-        <canvas id="wheel"></canvas>
+        <div class="video">
+            <video class="hidden"></video>
+        </div>
+        <canvas id="wheel" width="600" height="600"></canvas>
         <img id="wheel-img" width="75pt" height="75pt" src="images/3x_1.gif" alt="">
         <img id="arc" width="75pt" height="170pt" src="images/arc.png" alt="">
         <div id="description">Description placeholder.</div>        
     </div>
 
-    <div>
+    <div class="datasets-list">
         <div>
-            <input type="radio" id="events" name="list" value="events-data" autocomplete="off" data-show-edit-dialog="1" />
+            <input type="radio" id="events" name="list" value="events-data" autocomplete="off" checked onclick="selectDataSet.call(this)"/>
             <label for="events">События</label>
         </div>
 
         <div>
-            <input type="radio" id="clennedj" name="list" value="clennedj-data" autocomplete="off" data-show-edit-dialog="1" />
+            <input type="radio" id="clennedj" name="list" value="clennedj-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="clennedj">Членендж</label>
         </div>
 
         <div>
-            <input type="radio" id="points" name="list" value="points-data" autocomplete="off" data-show-edit-dialog="1" />
+            <input type="radio" id="points" name="list" value="points-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="points">Баллы</label>
         </div>
 
         <div>
-            <input type="radio" id="ganres" name="list" value="ganres-data" autocomplete="off" data-show-edit-dialog="1" />
+            <input type="radio" id="ganres" name="list" value="ganres-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="ganres">Жанры</label>
         </div>
 
         <div>
-            <input type="radio" id="punishments" name="list" value="punishments-data" autocomplete="off" data-show-edit-dialog="1" />
+            <input type="radio" id="punishments" name="list" value="punishments-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="punishments">Наказания</label>
         </div>
 
         <div>
-            <input type="radio" id="coins" name="list" value="coins-data" autocomplete="off" checked />
+            <input type="radio" id="coins" name="list" value="coins-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="coins">Монетка</label>
         </div>
 
         <div>
-            <input type="radio" id="items" name="list" value="items-data" autocomplete="off" checked />
+            <input type="radio" id="items" name="list" value="items-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="items">Предметы</label>
         </div>
 
         <div>
-            <input type="radio" id="friends" name="list" value="friends-data" autocomplete="off" checked />
+            <input type="radio" id="friends" name="list" value="friends-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
             <label for="friends">Друзья</label>
         </div>
     
-        <button id="spin">Крутить</button>
+        <button id="spin" onclick="spin()">Крутить</button>
+        <button id="spin" onclick="openEdit()">Настроить</button>
     </div>
+    <input type="range" id="volume" name="volume" min="0" max="100" value="25" onchange="setVolume.call(this)">
 
     <script src="utils.js"></script>
+    <script src="js/timer.js"></script>
     <script src="dataLoader.js"></script>
-    <script src="wheel.js"></script>
-    <script src="main.js"></script>
+    <script src="js/wheel2.js"></script>
+    <script src="js/main2.js"></script>
 </body>
 </html>

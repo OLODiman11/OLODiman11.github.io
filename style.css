@@ -27,3 +27,83 @@ body {
     color: aliceblue;
     font-family: serif;
 }
+
+.datasets-list{
+    display: flex;
+}
+
+.video{
+    height: 300pt;
+    position: absolute;
+    align-content: center;
+    top: 0;
+    bottom: 0;
+    right: -50pt;
+    margin: auto;
+    z-index: -10;
+}
+
+video{
+    height: 300pt;
+
+    -webkit-mask-image:url(images/mask.png);
+    -webkit-mask-position:center center;
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-size:cover;
+
+    mask-image:url(images/mask.png);
+    mask-position:center center;
+    mask-repeat:no-repeat;
+    mask-size:cover;
+}
+
+.fadein {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.fadeout {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+#edit {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+#editField {
+    position: absolute;
+    flex-flow: column wrap-reverse;
+    width: 300px;
+    height: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: rgb(19, 26, 29);
+}
+
+#scrollviewUl {
+    list-style-type: none;
+}
+
+#scrollview {
+    height: 80%;
+    overflow-y: auto;
+}
+
