@@ -47,7 +47,7 @@ function playVideo(){
 
 function loadVideo(){
     videoLoaded = false;
-    video.src = `videos/vid_${randomInt(1, 85)}.mp4`;
+    video.src = `videos/vid_${randomInt(1, 84)}.mp4`;
     video.load();
 }
 
