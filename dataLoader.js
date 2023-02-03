@@ -1,10 +1,10 @@
 function loadData(path) {
-    loadJson(path)
-    .then(json => {return jsonToData(json)})
+    loadDataset(path)
+    .then(json => {return quantifyDataset(json)})
     .catch(e => console.error(e));
 }
 
-async function loadJson(path){
+async function loadDataset(path){
     const response = await fetch(path);
 
     if (!response.ok) {
@@ -14,7 +14,7 @@ async function loadJson(path){
     return await response.json();
 }
 
-function jsonToData(json){
+function quantifyDataset(json){
     let data = [];
 
     for (let i = 0; i < json.length; i++) {

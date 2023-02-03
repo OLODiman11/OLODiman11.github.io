@@ -21,7 +21,12 @@
     },
     {
         "title":"Дима З",
-        "description":"Dota 2.",
+        "description":"Vampire the masquarade bloodlines.",
+        "quantity":1
+    },
+	{
+        "title":"Коля",
+        "description":"Mutant Year Zero Road to Eden.",
         "quantity":1
     }
 ]

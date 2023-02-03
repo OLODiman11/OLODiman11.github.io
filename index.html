@@ -7,76 +7,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="edit" class="hidden">
-        <div id="editField">
-            <div id="scrollview">
-                <ul id="scrollviewUl"></ul>
+    <div class="edit-shield hidden">
+        <div class="edit-field">
+            <div class="scrollview">
+                <ul></ul>
             </div>
             <button onclick="applyConfiguration()">Применить</button>
-            
         </div>
     </div>
 
-    <div class="wheel-container">
-        <div class="video">
-            <video class="hidden"></video>
-        </div>
-        <canvas id="wheel" width="600" height="600"></canvas>
-        <img id="wheel-img" width="75pt" height="75pt" src="images/3x_1.gif" alt="">
-        <img id="arc" width="75pt" height="170pt" src="images/arc.png" alt="">
-        <div id="description">Description placeholder.</div>        
+    <div class="datasets">
+        <ul>
+            <li><button value="events-data" onclick="selectDataset.call(this)">События</button></li>
+            <li><button value="clennedj-data" onclick="selectDataset.call(this)">Членендж</button></li>
+            <li><button value="points-data" onclick="selectDataset.call(this)">Баллы</button></li>
+            <li><button value="ganres-data" onclick="selectDataset.call(this)">Жанры</button></li>
+            <li><button value="punishments-data" onclick="selectDataset.call(this)">Наказания</button></li>
+            <li><button value="coins-data" onclick="selectDataset.call(this)">Монетка</button></li>
+            <li><button value="items-data" onclick="selectDataset.call(this)">Предметы</button></li>
+            <li><button value="friends-data" onclick="selectDataset.call(this)">Друзья</button></li> 
+        </ul>
     </div>
-
-    <div class="datasets-list">
-        <div>
-            <input type="radio" id="events" name="list" value="events-data" autocomplete="off" checked onclick="selectDataSet.call(this)"/>
-            <label for="events">События</label>
-        </div>
-
-        <div>
-            <input type="radio" id="clennedj" name="list" value="clennedj-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="clennedj">Членендж</label>
-        </div>
-
-        <div>
-            <input type="radio" id="points" name="list" value="points-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="points">Баллы</label>
-        </div>
-
-        <div>
-            <input type="radio" id="ganres" name="list" value="ganres-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="ganres">Жанры</label>
-        </div>
-
-        <div>
-            <input type="radio" id="punishments" name="list" value="punishments-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="punishments">Наказания</label>
-        </div>
-
-        <div>
-            <input type="radio" id="coins" name="list" value="coins-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="coins">Монетка</label>
-        </div>
-
-        <div>
-            <input type="radio" id="items" name="list" value="items-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="items">Предметы</label>
-        </div>
-
-        <div>
-            <input type="radio" id="friends" name="list" value="friends-data" autocomplete="off" onclick="selectDataSet.call(this)"/>
-            <label for="friends">Друзья</label>
-        </div>
+    <div class="wheel">
+        <canvas></canvas>
+    </div>
+    <div class="description">Description placeholder.</div>        
+    <div class="video">
+        <video class="invisible"></video>
+        <button onclick="spin.call(this)">Крутить</button>
+    </div>
     
-        <button id="spin" onclick="spin()">Крутить</button>
-        <button id="spin" onclick="openEdit()">Настроить</button>
-    </div>
+    <button class="edit-btn" onclick="openEdit()"></button>
     <input type="range" id="volume" name="volume" min="0" max="100" value="25" onchange="setVolume.call(this)">
 
+    <script src="js/settings.js"></script>
     <script src="utils.js"></script>
+    <script src="js/elementsLocator.js"></script>
+    <script src="js/dataPrepare.js"></script>
+    <script src="js/wheel2.js"></script>
     <script src="js/timer.js"></script>
     <script src="dataLoader.js"></script>
-    <script src="js/wheel2.js"></script>
     <script src="js/main2.js"></script>
 </body>
 </html>

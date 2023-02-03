@@ -1,0 +1,9 @@
+const MIN_ITEM_SCALE = 0.5;
+const MIN_ITEM_WIDTH = 50;
+const MAX_AMOUNT_OF_ITEMS_DISPLAYED = 7;
+const MAX_TITLE_LINES = 3;
+const MAX_TITLE_FONT_SIZE = 23;
+const MIN_TITLE_FONT_SIZE = 16;
+const ITEMS_FONT_FAMILY = 'Oswald';
+const ITEMS_COLOR = {r: 255, g: 255, b: 255};
+const SELECTED_ITEM_COLOR = {r: 192, g: 137, b: 35};

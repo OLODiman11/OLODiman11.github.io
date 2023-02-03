@@ -1,50 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: rgb(26, 37, 43);
-}
-
-.wheel-container {
-    position: relative;
-    margin-right: 10%;
-    margin-left: 10%;
-    display: flex;
-    align-items: center;
-}
-
-#wheel-img {
-    position: absolute;
-    top: 50% - 27.5pt;
-    left: -27.5pt;
-}
-
-#arc {
-    position: absolute;
-    top: 50% - 27.5pt;
-    left: 27.5pt;
-}
-
-#description {
-    font-size: 23px;
+    margin: 0;
+    padding: 0;
     color: aliceblue;
-    font-family: serif;
+    font-family: Oswald;
 }
 
-.datasets-list{
+button {
+    border: none;
+    background: none;
+    color: aliceblue;
+    font-family: Oswald;
+}
+
+button:hover {
+    color: blue;
+    background-color: rgba(0, 81, 255, 0.2);
+}
+
+.datasets {
+    margin: 0;
+    padding: 0;
+}
+
+.datasets button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: aliceblue;
+    font-family: Oswald;
+    padding: 0.8em;
+}
+
+.datasets button:hover {
+    color: blue;
+    background-color: rgba(0, 81, 255, 0.2);
+}
+
+.datasets ul {
+    list-style-type: none;
     display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
-.video{
-    height: 300pt;
-    position: absolute;
-    align-content: center;
-    top: 0;
-    bottom: 0;
-    right: -50pt;
-    margin: auto;
-    z-index: -10;
+.wheel {
+    height: 100px;
+    text-align: center;
 }
 
-video{
-    height: 300pt;
+.wheel canvas {
+    width: 90%;
+    height: 100%;
+}
+
+
+.video {
+    position: relative;
+    text-align: center;
+}
+
+.video video {
+    width: 100%;
 
     -webkit-mask-image:url(images/mask.png);
     -webkit-mask-position:center center;
@@ -55,6 +80,48 @@ video{
     mask-position:center center;
     mask-repeat:no-repeat;
     mask-size:cover;
+}
+
+.video button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 3em;
+    width: 7em;
+}
+
+.description {
+    text-align: center;
+    font-family: Oswald;
+    color: rgb(47, 78, 27);
+    font-size: 18px;
+    text-align: center;
+    justify-content: center;
+    margin: 0.8em;
+}
+
+.edit-btn {
+    width: 20pt;
+    height: 20pt;
+    background-color: wheat;
+
+    -webkit-mask-image:url(images/edit-icon.png);
+    -webkit-mask-position:center center;
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-size: cover;
+
+    mask-image:url(images/edit-icon.png);
+    mask-position:center center;
+    mask-repeat:no-repeat;
+    mask-size:cover;
+
+}
+
+.edit-btn:hover {
+    background-color: aqua;
 }
 
 .fadein {
@@ -70,11 +137,15 @@ video{
 }
 
 .hidden {
+    display: none;
+}
+
+.invisible {
     visibility: hidden;
     opacity: 0;
 }
 
-#edit {
+.edit-shield {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -85,11 +156,12 @@ video{
     z-index: 10;
 }
 
-#editField {
+.edit-field {
+    border-radius: 20px;
     position: absolute;
-    flex-flow: column wrap-reverse;
-    width: 300px;
-    height: 500px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
     top: 0;
     bottom: 0;
     left: 0;
@@ -98,12 +170,23 @@ video{
     background-color: rgb(19, 26, 29);
 }
 
-#scrollviewUl {
-    list-style-type: none;
+.edit-field button {
+    margin: 1em;
 }
 
-#scrollview {
-    height: 80%;
+.scrollview {
+    min-height: 150pt;
+    max-height: 250pt;
+    min-width: 200pt;
+    max-width: 400pt;
     overflow-y: auto;
 }
+
+.scrollview ul {
+    list-style-type: none;
+    text-align: start;
+    padding: 0;
+    margin: 1em;
+}
+
 

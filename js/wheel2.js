@@ -1,25 +1,27 @@
-const AMOUNT_OF_ITEMS_DISPLAYED = 7;
-const OFFSET = Math.floor(AMOUNT_OF_ITEMS_DISPLAYED / 2);
 
 class Wheel2{
-
+    
     items = [];
     
     #spinning = false;
     #currentValue = 0;
     #scrollingSpeed = 0; // items per sec
     #prevSelection = -1;
-
+    
     #x = 0;
     #y = 0;
     #radius = 0;
-
+    
     constructor(x, y, radius){
         this.#x = x;
         this.#y = y;
         this.#radius = radius;
     }
 
+    get offset(){
+        return Math.floor(amountOfItemsDisplayed / 2);
+    }
+    
     onNewSelection = function(selection) {};
 
     getCurrentSelection(){
@@ -78,27 +80,34 @@ class Wheel2{
         this.spin(3 * newSpeed);
     }
     
-    updateAndDraw(timer, context){
-        context.clearRect(0, 0, 800, 600);
-
+    updateAndDraw(timer, context){        
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        
         this.#currentValue += this.#scrollingSpeed * timer.deltaTime;
         this.#currentValue = mod(this.#currentValue, this.items.length);
         
-        let lowerBound = this.#currentValue - OFFSET;
-        let upperBound = this.#currentValue + OFFSET;
+        let lowerBound = this.#currentValue - this.offset;
+        let upperBound = this.#currentValue + this.offset;
         let currentItemIndex = Math.round(this.#currentValue);
-        for (let i = currentItemIndex - OFFSET; i <= currentItemIndex + OFFSET; i++) {
-            var factor = map(i, lowerBound, upperBound, 0, 1);
-            let x = this.#x + this.#radius * Math.cos(Math.PI * (0.5 - factor));
-            let y = this.#y + this.#radius * Math.sin(Math.PI * (0.5 - factor));
-            factor = (1 - Math.abs(2 * factor - 1));
-            context.font = `${(0.5 + factor) * 23}px serif`;
-            context.fillStyle = `rgba(255, 255, 255, ${factor})`;
-            if(mod(Math.round(i), this.items.length) === this.getCurrentSelection()){
-                context.fillStyle = `rgba(192, 137, 35, ${factor})`;
+        let y = canvas.height / 2;
+        for (let i = currentItemIndex - this.offset; i <= currentItemIndex +  this.offset; i++) {
+            let wrappedIndex = mod(Math.round(i), this.items.length);
+            let item = this.items[wrappedIndex];
+            let factor = Math.sin(map(i, lowerBound, upperBound, -Math.PI / 2, Math.PI / 2));
+            let x = canvas.width / 2 + 0.5 * (canvas.width - maxWidth * MIN_ITEM_SCALE) * factor;  //0.5 * canvas.width * (1 + factor * (1 - MIN_ITEM_SCALE));
+            let scaleFactor = 1 - Math.abs(factor);
+            setContextFontSize(context, (MIN_ITEM_SCALE + (1 - MIN_ITEM_SCALE) * scaleFactor) * item.fontSize);
+            setContextFillStyle(context, ITEMS_COLOR, scaleFactor);
+            if(wrappedIndex === this.getCurrentSelection()){
+                setContextFillStyle(context, SELECTED_ITEM_COLOR, scaleFactor);
+            };
+            let measures = context.measureText(item.title[0]);
+            let lineHeight = measures.actualBoundingBoxAscent + measures.actualBoundingBoxDescent;
+            for (let j = 0; j < item.title.length; j++) {
+                let line = item.title[j];
+                let offset = j - Math.floor(item.title.length / 2) + (1 - item.title.length % 2) / 2;
+                context.fillText(line, x, y + offset * lineHeight);
             }
-            context.textBaseline = 'middle';
-            context.fillText(this.items[mod(Math.round(i), this.items.length)].title, x, y);
         }
 
         let selection = this.getCurrentSelection();

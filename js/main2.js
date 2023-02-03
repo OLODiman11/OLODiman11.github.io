@@ -1,40 +1,48 @@
 let videoLoaded = false;
-
-let dataset = []; 
-const volume = document.querySelector('#volume');
-const wheel = new Wheel2(0, 300, 203);
-wheel.onNewSelection = setDiscription;
+let rawDataset = [];
+let preparedDataset = []; 
+const wheel = getWheel();
 const timer = new Timer();
-const video = document.querySelector('video');
-video.onloadedmetadata = function(){videoLoaded = true;}
-video.onended = function(){loadVideo();}
+onresize = onResize;
 
 loadVideo();
+calculateMaxItemWidthAndAdjustAmountOfItemsDispleyed();
+selectDataset.call(datasetsList.childNodes[1].firstChild).then(() => wheel.updateAndDraw(timer, context));
 
-const desc = document.querySelector('#description');
-selectDataSet.call(document.querySelector('#events')).then(() => 
-    window.requestAnimationFrame(() => wheel.updateAndDraw(timer, document.querySelector('#wheel').getContext('2d'))));
+function onResize(){
+    calculateMaxItemWidthAndAdjustAmountOfItemsDispleyed();
+    wrapTitleAndAdjustFontSize(preparedDataset);
+}
 
 function spin(){
+    this.className = 'hidden';
     playVideo();
     let duration = 22;
     if(videoLoaded) duration = video.duration;
     wheel.startTheSpin(5, 3, duration, easeInOutSine, timer);
 }
 
-async function selectDataSet(){
+function getWheel(){
+    let wheel = new Wheel2(0, 300, 203);
+    wheel.onNewSelection = setDiscription;
+    return wheel;
+}
 
-    return await loadJson(`data/${this.value}.json`)
-    .then(json => {
-        dataset = json;
+async function selectDataset(){
+    return await loadDataset(`data/${this.value}.json`)
+    .then(dataset => {
+        rawDataset = dataset;
+        preparedDataset = JSON.parse(JSON.stringify(rawDataset));
         setEdit();
+        
+        wrapTitleAndAdjustFontSize(preparedDataset);
         setItemsOnTheWheel();
     })
     .catch(e => console.error(e));
 }
 
 function setItemsOnTheWheel(){
-    wheel.setItems(shuffle(jsonToData(dataset)));
+    wheel.setItems(shuffle(quantifyDataset(preparedDataset)));
 }
 
 function playVideo(){
@@ -73,16 +81,11 @@ function setVolume(){
     video.volume = this.value / 100;
 }
 
-function setDiscription(selection){
-    console.log(selection);
-    desc.innerHTML = wheel.items[selection].description;
-}
-
 function setEdit(){
-    let editList = document.querySelector('#scrollviewUl');
+    let editList = document.querySelector('.scrollview ul');
     editList.innerHTML = "";
-    for (let i = 0; i < dataset.length; i++) {
-        const element = dataset[i];
+    for (let i = 0; i < rawDataset.length; i++) {
+        const element = rawDataset[i];
         let li = document.createElement('li');
         li.innerHTML = `<input id="${i}" type="checkbox" value="${element.title}" onclick="checkItem.call(this)" checked>
         <label for="${i}">${element.title}</label>`
@@ -91,7 +94,15 @@ function setEdit(){
 }
 
 function checkItem(){
-    dataset.forEach(element => {
+    for (let i = 0; i < rawDataset.length; i++) {
+        const rawItem = rawDataset[i];
+        const preperedItem = preparedDataset[i];
+        if(rawItem.title === this.value){
+            rawItem.excluded = !this.checked;
+            preperedItem.excluded = !this.checked;
+        }
+    }
+    rawDataset.forEach(element => {
         if(element.title === this.value){
             element.excluded = !this.checked;
         }
@@ -99,12 +110,10 @@ function checkItem(){
 }
 
 function applyConfiguration(){
-    let edit = document.querySelector('#edit');
-    edit.className = 'hidden';
+    editShield.className = 'hidden';
     setItemsOnTheWheel();
 }
 
 function openEdit(){
-    let edit = document.querySelector('#edit');
-    edit.className = '';
+    editShield.className = 'edit-shield';
 }
