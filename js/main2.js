@@ -15,7 +15,7 @@ function onResize(){
 }
 
 function spin(){
-    this.className = 'hidden';
+    this.className = 'absolute centered-self no-display';
     playVideo();
     let duration = 22;
     if(videoLoaded) duration = video.duration;
@@ -47,7 +47,7 @@ function setItemsOnTheWheel(){
 
 function playVideo(){
     video.className = 'fadein';
-    setVolume.call(document.querySelector('#volume'));
+    setVolume.call(volume);
     video.play();
     fadeInAudio(0, 2);
     setTimeout(() => {video.className = 'fadeout'; fadeOutAudio(0, 2);}, 1000 * (video.duration - 2));
@@ -110,10 +110,10 @@ function checkItem(){
 }
 
 function applyConfiguration(){
-    editShield.className = 'hidden';
+    editShield.className = 'edit-shield absolute centered-self no-display';
     setItemsOnTheWheel();
 }
 
 function openEdit(){
-    editShield.className = 'edit-shield';
+    editShield.className = 'edit-shield absolute centered-self';
 }

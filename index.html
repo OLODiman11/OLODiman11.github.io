@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Колесо BFD</title>
     <link rel="icon" href="favicon.ico" type="image/ico" sizes="16x16">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div class="edit-shield hidden">
-        <div class="edit-field">
+    <div class="edit-shield absolute no-display">
+        <div class="edit-field absolute centered-self">
             <div class="scrollview">
                 <ul></ul>
             </div>
@@ -16,29 +16,31 @@
         </div>
     </div>
 
-    <div class="datasets">
+    <div class="datasets header">
         <ul>
-            <li><button value="events-data" onclick="selectDataset.call(this)">События</button></li>
-            <li><button value="clennedj-data" onclick="selectDataset.call(this)">Членендж</button></li>
-            <li><button value="points-data" onclick="selectDataset.call(this)">Баллы</button></li>
-            <li><button value="ganres-data" onclick="selectDataset.call(this)">Жанры</button></li>
-            <li><button value="punishments-data" onclick="selectDataset.call(this)">Наказания</button></li>
-            <li><button value="coins-data" onclick="selectDataset.call(this)">Монетка</button></li>
-            <li><button value="items-data" onclick="selectDataset.call(this)">Предметы</button></li>
-            <li><button value="friends-data" onclick="selectDataset.call(this)">Друзья</button></li> 
+            <li><button value="events-data" onclick="selectDataset.call(this)">События</button></li
+            ><li><button value="clennedj-data" onclick="selectDataset.call(this)">Членендж</button></li
+            ><li><button value="points-data" onclick="selectDataset.call(this)">Баллы</button></li
+            ><li><button value="ganres-data" onclick="selectDataset.call(this)">Жанры</button></li
+            ><li><button value="punishments-data" onclick="selectDataset.call(this)">Наказания</button></li
+            ><li><button value="coins-data" onclick="selectDataset.call(this)">Монетка</button></li
+            ><li><button value="items-data" onclick="selectDataset.call(this)">Предметы</button></li
+            ><li><button value="friends-data" onclick="selectDataset.call(this)">Друзья</button></li> 
         </ul>
     </div>
-    <div class="wheel">
+    <div class="wheel-container">
         <canvas></canvas>
     </div>
     <div class="description">Description placeholder.</div>        
-    <div class="video">
+    <div class="relative video-container">
         <video class="invisible"></video>
-        <button onclick="spin.call(this)">Крутить</button>
+        <button class="absolute centered-self" onclick="spin.call(this)">Крутить</button>
     </div>
     
-    <button class="edit-btn" onclick="openEdit()"></button>
-    <input type="range" id="volume" name="volume" min="0" max="100" value="25" onchange="setVolume.call(this)">
+    <div class="footer">
+        <button class="edit-btn" onclick="openEdit()"></button>
+        <input type="range" id="volume" name="volume" min="0" max="100" value="25" onchange="setVolume.call(this)">
+    </div>
 
     <script src="js/settings.js"></script>
     <script src="utils.js"></script>

@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #2E4052;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+button:hover {
+    background-color: #FF8552;
+    border-radius: 0.5em;
+}
+
+body, button {
+    font-family: Oswald;
+    color: #FCF7F8;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.edit-shield {
+    background-color: #2e405242;
+    z-index: 10;
+}
+
+.edit-field {
+    background-color: #984447;
+    border-radius: 1em;
+    width: fit-content;
+    height: fit-content;
+    min-height: 20vh;
+    max-height: 50vh;
+    min-width: 20vh;
+    max-width: 30vh;
+}
+
+.edit-field button {
+    margin: 1em;
+    padding: 0.5em;
+}
+
+.scrollview {
+    overflow-y: auto;
+}
+
+.scrollview ul {
+    list-style-type: none;
+    text-align: start;
+    padding: 0;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: #80393b;
+}
+
+.datasets li {
+    display: inline-block;
+    height: 100%;
+}
+
+.datasets button {
+    padding: 0 0.5em;
+}
+
+video {
+    height: 100%;
+
+    -webkit-mask-image:url(images/mask.png);
+    -webkit-mask-position:center center;
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-size:cover;
+
+    mask-image:url(images/mask.png);
+    mask-position:center center;
+    mask-repeat:no-repeat;
+    mask-size:cover;
+}
+
+.video-container {
+    height: calc(100vh - 2.5em - 100px - 8em - 40px);
+}
+
+canvas {
+    height: 100%;
+    width: 90%;
+}
+
+.header, .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #984447;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+.wheel-container {
+    background-color: #364553;
+    height: 100px;
+}
+
+.video-container button {
+    background-color: #FF8552;
+    width: 5em;
+    height: 3em;
+    border-radius: 0.7em;
+}
+
+.video-container button:hover {
+    background-color: #FCF7F8;
+    border: 2px solid #FF8552;
+    color: #FF8552;
+    width: 5em;
+    height: 3em;
+    border-radius: 0.7em;
+    cursor: pointer;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inline-list button {
+    padding: 0.3em 0.5em;
+    height: 100%;
+}
+
+.description {
+    height: 6em;
+    margin: 1em;
+}
+
+.centered-self {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.no-display {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.fadein {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.fadeout {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.edit-btn {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    background-color: #FCF7F8;
+
+    -webkit-mask-image:url(images/edit-icon.png);
+    -webkit-mask-position:center center;
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-size: cover;
+
+    mask-image:url(images/edit-icon.png);
+    mask-position:center center;
+    mask-repeat:no-repeat;
+    mask-size:cover;
+}

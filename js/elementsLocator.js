@@ -1,10 +1,10 @@
-const canvas = document.querySelector('.wheel canvas');
+const canvas = document.querySelector('.wheel-container canvas');
 const context = getCanvasContext();
 const volume = document.querySelector('#volume');
 const video = getVideo();
 const description = document.querySelector('.description');
 const datasetsList = document.querySelector('.datasets ul');
-const spinBtn = document.querySelector('.video button');
+const spinBtn = document.querySelector('.video-container button');
 const editShield = document.querySelector('.edit-shield');
 
 function getCanvasContext(){
@@ -17,9 +17,9 @@ function getCanvasContext(){
 }
 
 function getVideo(){
-    let video = document.querySelector('.video video');
+    let video = document.querySelector('.video-container video');
     video.onloadedmetadata = function(){videoLoaded = true;}
-    video.onended = function(){ loadVideo(); spinBtn.className = "";};
+    video.onended = function(){ loadVideo(); spinBtn.className = "absolute centered-self";};
     return video;
 }
 
